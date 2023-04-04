@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 13:10:38 by afontain          #+#    #+#             */
-/*   Updated: 2023/03/28 17:43:34 by afontain         ###   ########.fr       */
+/*   Updated: 2023/04/04 18:51:39 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,24 +26,15 @@
 
 #define MLX_ERROR 1
 
-#define MAX_ITER 50
+#define MAX_ITER 250
 
 #define x1 -2.1
 #define x2 0.6
 #define y1 -1.2
 #define y2 1.2
 
-#define WINDOW_WIDTH 600
-#define WINDOW_HEIGHT 600
-
-typedef struct s_rect
-{
-	int x;
-	int	y;
-	int width;
-	int height;
-	int	color;
-}t_rect;
+#define WINDOW_WIDTH 1200
+#define WINDOW_HEIGHT 900
 
 // typedef struct s_complex
 // {
@@ -82,22 +73,22 @@ typedef struct s_data
 }t_data;	
 
 //Main
-void	img_pix_put(t_img *img, int x, int y, int color);
+void	img_pxl_put(t_img *img, int x, int y, int color);
 
 // Close Window
 int		handle_keypress(int keysym, t_data *data);
 int		handle_mousepress(t_data *data);
 
 // Render
-int		render(t_data *data);
+// int		render(t_data *data);
 
 //Utils
 
 //Julia_set
-int	julia(int x, int y, t_data	*data, t_img *img);
+int	julia(t_data *data);
 
 //Colors
-int	choose_color(int x, int y, t_data *data, int n);
+void	choose_color(int x, int y, t_data *data, int n);
 int	create_color(int R, int G, int B);
 
 #endif

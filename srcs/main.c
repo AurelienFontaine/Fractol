@@ -6,13 +6,13 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 13:08:56 by afontain          #+#    #+#             */
-/*   Updated: 2023/03/28 16:15:58 by afontain         ###   ########.fr       */
+/*   Updated: 2023/04/04 17:42:01 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	img_pix_put(t_img *img, int x, int y, int color)
+void	img_pxl_put(t_img *img, int x, int y, int color)
 {
 	char    *pixel;
 	int		i;
@@ -48,7 +48,7 @@ int	main(void)
 	data.img.addr = mlx_get_data_addr(data.img.mlx_img, &data.img.bpp,
 			&data.img.line_len, &data.img.endian);
 	// /* Setup hooks */ 
-	mlx_loop_hook(data.mlx_ptr, &render, &data);
+	mlx_loop_hook(data.mlx_ptr, &julia, &data);
 	
 	// Suppr la fenetre avec ESC et le X de la fenetre
 	mlx_hook(data.win_ptr, KeyPress, KeyPressMask, &handle_keypress, &data);
