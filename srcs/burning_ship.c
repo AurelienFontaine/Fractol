@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   julia_set.c                                        :+:      :+:    :+:   */
+/*   burning_ship.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/24 16:16:23 by afontain          #+#    #+#             */
-/*   Updated: 2023/04/04 18:48:20 by afontain         ###   ########.fr       */
+/*   Created: 2023/04/06 14:38:38 by afontain          #+#    #+#             */
+/*   Updated: 2023/04/10 18:41:07 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-// int	julia(int x, int y, t_data	*data, t_img *img)
-int	julia(t_data *data)
+int	burning_ship(t_data *data)
 {
 	double	tmp;
 	double	za;
@@ -23,7 +22,8 @@ int	julia(t_data *data)
 	double 	cb;
 	double x;
 	double y;
-
+	// double z;
+	
 	y = 0;
 	while(y < WINDOW_HEIGHT)
 	{	
@@ -31,23 +31,25 @@ int	julia(t_data *data)
 		x = 0;
 		while(x < WINDOW_WIDTH)
 		{
-			ca = (x / (WINDOW_WIDTH / (x2 - x1))) + x1;
-     		cb = (y / (WINDOW_HEIGHT / (y2 - y1))) + y1;
+			ca = (x / (WINDOW_WIDTH / (xb2 - xb1))) + xb1;
+     		cb = (y / (WINDOW_HEIGHT / (yb2 - yb1))) + yb1;
 			za = 0;
 			zb = 0;
 			n = 0;
 			while (za*za + zb*zb < 4 && n < MAX_ITER)
 			{
-				tmp = za;
+				zb = fabs(zb);
+				tmp = fabs(za);
 				za = za*za - zb*zb + ca;
 				zb = 2*tmp*zb + cb;
 				n++;
 			}
+			// z = n + 1 - log(log2(sqrt(za*za + zb*zb))) / log(2);
 			if (n == MAX_ITER)
 				img_pxl_put(&data->img, x, y, create_color(0, 0, 0));
 			else	
-				// img_pxl_put(&data->img, x, y, create_color((255*n)/ MAX_ITER, 0, 0));
-				choose_color(x, y, data, n);
+				// img_pxl_put(&data->img, x, y, create_color(z, z, z));
+				choose_colors1(data, za, zb, x, y, n);
 			x++;
 		}
 	}

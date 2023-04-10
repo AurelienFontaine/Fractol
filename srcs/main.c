@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 13:08:56 by afontain          #+#    #+#             */
-/*   Updated: 2023/04/04 17:42:01 by afontain         ###   ########.fr       */
+/*   Updated: 2023/04/10 18:58:37 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	main(void)
 			&data.img.line_len, &data.img.endian);
 	// /* Setup hooks */ 
 	mlx_loop_hook(data.mlx_ptr, &julia, &data);
-	
+	// choose_fractal(ac, av, &data);
 	// Suppr la fenetre avec ESC et le X de la fenetre
 	mlx_hook(data.win_ptr, KeyPress, KeyPressMask, &handle_keypress, &data);
 	mlx_hook(data.win_ptr, ClientMessage, KeyPressMask, &handle_mousepress, &data);

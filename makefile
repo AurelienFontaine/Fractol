@@ -6,7 +6,7 @@
 #    By: afontain <afontain@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/21 13:09:26 by afontain          #+#    #+#              #
-#    Updated: 2023/03/24 16:42:41 by afontain         ###   ########.fr        #
+#    Updated: 2023/04/10 18:29:15 by afontain         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,10 +17,14 @@ SRCS_DIR = srcs/
 GNL_DIR = GNL/
 
  SRCS =		${SRCS_DIR}main.c \
- 			${SRCS_DIR}render.c \
 			${GNL_DIR}get_next_line_utils.c \
  			${GNL_DIR}get_next_line.c \
 			${SRCS_DIR}close_window.c \
+			${SRCS_DIR}julia.c \
+			${SRCS_DIR}burning_ship.c \
+			${SRCS_DIR}mandelbrot.c \
+			${SRCS_DIR}colors.c \
+			# ${SRCS_DIR}choose_fractals
 			
 _DEPS =		fractol.h
 
