@@ -6,21 +6,11 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 19:07:48 by afontain          #+#    #+#             */
-/*   Updated: 2023/03/21 15:59:33 by afontain         ###   ########.fr       */
+/*   Updated: 2023/04/13 17:36:07 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-// int	ft_strcmp(char *s1, char *s2)
-// {
-// 	size_t			i;
-
-// 	i = 0;
-// 	while (s1[i] != '\0' && s2[i] != '\0' && s1[i] == s2[i])
-// 		i++;
-// 	return (s1[i] - s2[i]);
-// }
 
 int	compare(char *s1, char *s2)
 {

@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 13:59:10 by afontain          #+#    #+#             */
-/*   Updated: 2023/04/10 18:12:19 by afontain         ###   ########.fr       */
+/*   Updated: 2023/04/11 17:36:26 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,28 +22,61 @@ int	ft_strcmp(char *s1, char *s2)
 	return (s1[i] - s2[i]);
 }
 
-void	draw_mouse(t_data *data, int x, int y)
+int ft_is_space(int c)
 {
-	int mouse_x;
-	int mouse_y;
-	int tmp_y;
-
-	mouse_x = x + 10;
-	mouse_y = y + 3;
-	tmp_y = y;
-	while (x < mouse_x)
-	{
-		y = tmp_y;
-		while (y < mouse_y)
-		{
-			img_pxl_put(&data->img, x, y, create_color(220, 220, 220));
-			y++;
-		}
-		x++;
-	}
+	if (c == ' ')
+		return (1);
+	return (0);
 }
 
-void	choose_function()
+int	ft_isdigit(int c)
 {
-	
+	if (c <= '9' && c >= '0')
+		return (1);
+	return (0);
+}
+
+static int	skip_space_sign(char *str, int *is_neg)
+{
+	int	i;
+
+	i = 0;
+	while (ft_is_space(str[i]))
+		i++;
+	if (str[i] == '+' || str[i] == '-')
+	{
+		if (str[i] == '-')
+			*is_neg *= -1;
+		i++;
+	}
+	return (i);
+}
+
+double	ft_atof(char *str)
+{
+	int		i;
+	double	nb;
+	int		is_neg;
+	double	div;
+
+	nb = 0;
+	div = 0.1;
+	is_neg = 1;
+	i = skip_space_sign(str, &is_neg);
+	while (str[i] && ft_isdigit(str[i]) && str[i] != '.')
+	{
+		nb = (nb * 10.0) + (str[i] - '0');
+		i++;
+	}
+	if (str[i] == '.')
+		i++;
+	while (str[i] && ft_isdigit(str[i]))
+	{
+		nb = nb + ((str[i] - '0') * div);
+		div *= 0.1;
+		i++;
+	}
+	if (str[i] && !ft_isdigit(str[i]))
+		return (0);
+	return (nb * is_neg);
 }

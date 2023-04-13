@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 12:31:23 by afontain          #+#    #+#             */
-/*   Updated: 2023/04/10 18:58:12 by afontain         ###   ########.fr       */
+/*   Updated: 2023/04/13 17:13:29 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ int	julia(t_data *data)
 		x = 0;
 		while(x < WINDOW_WIDTH)
 		{
-			data->ca = (x / (WINDOW_WIDTH / (xj2 - xj1))) + xj1;
-     		data->cb = (y / (WINDOW_HEIGHT / (yj2 - yj1))) + yj1;
+			data->ca = (x / (WINDOW_WIDTH / (data->xmax - data->xmin))) + data->xmin;
+     		data->cb = (y / (WINDOW_HEIGHT / (data->ymax - data->ymin))) + data->ymin;
 			n = 0;
 			y2 = 0;
 			x2 = 0;
@@ -57,10 +57,11 @@ int	julia(t_data *data)
 			{
 				x2 = data->ca*data->ca;
 				y2 = data->cb*data->cb;
-				data->cb = 2 * data->ca * data->cb + 0.1889;
-				data->ca = x2 - y2 - 0.7269;
+				data->cb = 2 * data->ca * data->cb + 0.1889; //+ vr;
+				data->ca = x2 - y2 - 0.7269; // +vc;
 				n++;
 			}
+			// color_it(data, x, y , n);
 			if (n == MAX_ITER)
 				img_pxl_put(&data->img, x, y, create_color(0, 0, 0));
 			else
