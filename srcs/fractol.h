@@ -32,6 +32,8 @@
 #define JULIA 2
 #define BURNING_SHIP 3
 
+#define EVENT_CLOSE_BTN 17
+
 // //Mandelbrot scope
 // #define xm1 -2
 // #define xm2 0.6

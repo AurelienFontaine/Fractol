@@ -60,9 +60,9 @@ int	main(void)
 	
 	// Suppr la fenetre avec ESC et le X de la fenetre
 	// mlx_hook(data.win_ptr, KeyPress, KeyPressMask, &handle_keypress, &data);
-	
-	// mlx_key_hook(data.win_ptr, &key_event, &data);
-	// // mlx_mouse_hook(data.win_ptr, &mouse_event, &data);
+	mlx_hook(data.win, EVENT_CLOSE_BTN, 0, close_it, &data);
+	mlx_key_hook(data.win_ptr, key_event, &data);
+	mlx_mouse_hook(data.win_ptr, mouse_event, &data);
 	
 	mlx_hook(data.win_ptr, ClientMessage, KeyPressMask, &key_event, &data);
 	// mlx_hook(data.win_ptr, MotionNotify, PointerMotionMask, &mouse_event, &data);
@@ -70,8 +70,8 @@ int	main(void)
 	mlx_loop(data.mlx_ptr);
 
 	/*Execute qd il y'a plus de fenetres */
-	mlx_destroy_image(data.mlx_ptr, data.img.mlx_img);
-	mlx_destroy_display(data.mlx_ptr);
-	free(data.mlx_ptr);
+	// mlx_destroy_image(data.mlx_ptr, data.img.mlx_img);
+	// mlx_destroy_display(data.mlx_ptr);
+	// free(data.mlx_ptr);
 	// }
 }
