@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 12:59:38 by afontain          #+#    #+#             */
-/*   Updated: 2023/04/13 17:54:44 by afontain         ###   ########.fr       */
+/*   Updated: 2023/04/17 19:19:45 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,25 +46,30 @@ void	zoom(t_data *data, double zoom)
 	double	mil_r;
 	double	mil_c;
 	
-	mil_r = data->xmax - data->xmin;
+	mil_r = data->xmin - data->xmax;
 	mil_c = data->ymax - data->ymin;
 	data->xmax = data->xmax + (mil_r - zoom * mil_r) / 2;
 	data->xmin = data->xmax + zoom * mil_r;
 	data->ymin = data->ymin + (mil_c - zoom * mil_c) / 2;
 	data->ymax = data->ymin + zoom * mil_c;
+	printf("%f\n", data->xmax);
+	printf("%f\n", data->xmin);
+	printf("%f\n", data->ymax);
+	printf("%f\n", data->xmin);
 }
 
-int	key_event(t_data *data, int keysym)
+int	key_event(int keysym, t_data *data)
 {
+	// printf("data %p\n", data);
 	if (keysym == XK_Escape)
 	{
 		close_it(data);	
 		return (0);
 	}
-	if (keysym == XK_Pointer_Button4)
-		zoom(data, 0.5);
-	else if (keysym == XK_Pointer_Button5)
-		zoom(data, 0.5);
+	// if (keysym == XK_Pointer_Button4)
+	// 	zoom(data, 0.5);
+	// else if (keysym == XK_Pointer_Button5)
+	// 	zoom(data, 0.5);
 	else if (keysym == XK_Left)
 		move(data, 0.2, 'L');
 	else if (keysym == XK_Up)
@@ -73,13 +78,16 @@ int	key_event(t_data *data, int keysym)
 		move(data, 0.2, 'R');
 	else if (keysym == XK_Down)
 		move(data, 0.2, 'D');
-	// render(data->mlx_ptr);
+	choose_fractal(data);
+	// printf("data %p\n", data);
 	return(0);
 }
 
-int mouse_event(t_data *data, int x, int y, int keysym)
+// int x, int y
+
+int mouse_event(int keysym, int x, int y, t_data *data)
 {
-	if (keysym == XK_Pointer_Button4)
+	if (keysym == MOUSE_BTN_4)
 	{
 		zoom(data, 0.5);
 		x -= WINDOW_WIDTH / 2;
@@ -93,11 +101,11 @@ int mouse_event(t_data *data, int x, int y, int keysym)
 		else if (y > 0)
 			move(data, (double)y / WINDOW_HEIGHT, 'D');
 	}
-	else if (keysym == XK_Pointer_Button5)
+	else if (keysym == MOUSE_BTN_5)
 		zoom(data, 2);
 	else
 		return (0);
-	// render(data);
+	choose_fractal(data);
 	return (0);
 }
 

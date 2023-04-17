@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 16:16:23 by afontain          #+#    #+#             */
-/*   Updated: 2023/04/13 17:44:38 by afontain         ###   ########.fr       */
+/*   Updated: 2023/04/17 18:39:50 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int	mandelbrot(t_data *data)
 			x++;
 		}
 	}
+	printf("mandelbrot %p\n", data);
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img.mlx_img, 0, 0);
 	return (0);
 }

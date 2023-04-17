@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 17:03:08 by afontain          #+#    #+#             */
-/*   Updated: 2023/04/13 17:45:38 by afontain         ###   ########.fr       */
+/*   Updated: 2023/04/17 19:18:46 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,13 @@
 
 int choose_fractal(t_data *data)
 {
+	// mlx_clear_window(data->mlx_ptr, data->win_ptr);
+	printf("CECI EST UN TEST\n");
+	printf("%p\n", data);
 	if (data->set == MANDELBROT)
+	{
 		return (mandelbrot(data));
+	}
 	else if (data->set == JULIA)
 		return (julia(data));
 	else if (data->set == BURNING_SHIP)

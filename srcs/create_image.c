@@ -6,11 +6,31 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 16:15:47 by afontain          #+#    #+#             */
-/*   Updated: 2023/04/13 17:51:07 by afontain         ###   ########.fr       */
+/*   Updated: 2023/04/17 15:55:48 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+void	init_data(t_data *data)
+{
+	data->mlx_ptr = NULL;
+	data->win_ptr = NULL;
+	data->set = -1;
+	data->ca = 0;
+	data->cb = 0;
+ 	data->vr = 0;
+ 	data->vc = 0;
+	data->xmax = 0;
+	data->xmin = 0;
+	data->ymax = 0;
+	data->ymin = 0;
+	data->mouse_x = 0;
+	data->mouse_y = 0;
+	data->x = 0;
+	data->y = 0;
+	data->color = 0;
+}
 
 int init_window(t_data *data)
 {

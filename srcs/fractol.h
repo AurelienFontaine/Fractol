@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 13:10:38 by afontain          #+#    #+#             */
-/*   Updated: 2023/04/13 18:02:06 by afontain         ###   ########.fr       */
+/*   Updated: 2023/04/17 18:34:09 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@
 #define JULIA 2
 #define BURNING_SHIP 3
 
+#define MOUSE_BTN_4 4
+#define MOUSE_BTN_5 5
 #define EVENT_CLOSE_BTN 17
 
 // //Mandelbrot scope
@@ -55,7 +57,9 @@
 #define WINDOW_WIDTH 1200
 #define WINDOW_HEIGHT 900
 
-#define M_PI 3.14159265358979323846
+# ifndef M_PI
+#  define M_PI 3.14159265358979323846
+# endif
 
 typedef struct s_complex
 {
@@ -146,14 +150,16 @@ int		create_color(int R, int G, int B);
 //Choose Fractals
 void	check_args(t_data *data, int ac, char **av);
 void	get_fractal(t_data *data, char **av);
+int 	choose_fractal(t_data *data);
 
 //Take_events
 void	zoom(t_data *data, double zoom);
 void 	move(t_data *data, double move, char direction);
-int		key_event(t_data *data, int keysym);
-int		mouse_event(t_data *data, int x, int y, int keysym);
+int		key_event(int keysym, t_data *data);
+int 	mouse_event(int keysym, int x, int y, t_data *data);
 
 //Create image
 int	 	init_window(t_data *data);
+void	init_data(t_data *data);
 
 #endif

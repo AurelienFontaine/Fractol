@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 13:08:56 by afontain          #+#    #+#             */
-/*   Updated: 2023/04/13 18:23:22 by afontain         ###   ########.fr       */
+/*   Updated: 2023/04/17 17:55:15 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,49 +29,39 @@ void	img_pxl_put(t_img *img, int x, int y, int color)
 	}
 }
 
-int	main(void)
+int	main(int ac, char **av)
 {
 	t_data	data;
 
-	// if (ac < 2)
-		// write(1, "Pas de Fractales choisies\n", 26);
-	// init_window(&data);
-	// init(data);
-	data.mlx_ptr = mlx_init();
-	if (!data.mlx_ptr)
-		return (MLX_ERROR);
-	data.win_ptr = mlx_new_window(data.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT,
-								"Fractol");
-	if (!data.win_ptr)
-	{
-		free(data.win_ptr);
-		return (MLX_ERROR);
-	}
-	data.img.mlx_img = mlx_new_image(data.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT);
-	
-	data.img.addr = mlx_get_data_addr(data.img.mlx_img, &data.img.bpp,
-			&data.img.line_len, &data.img.endian);
+	// printf("data %p\n", data);
+
+	if (ac < 2)
+		write(1, "Pas de Fractales choisies\n", 26);
+	init_data(&data);
+	check_args(&data, ac, av);
+	init_window(&data);
+
+	// printf("data %p\n", data);
 	
 	// /* Setup hooks */ 
-	// check_args(&data, ac, av);
-	// choose_fract(&data, ac, av);
-	// mlx_loop_hook(data.mlx_ptr, &julia, &data);
-	// choose_fractal(ac, av, &data);
-	
+	// check_args(data, ac, av);
+	// choose_fractal(data, ac, av)
+	// mlx_loop_hook(data.mlx_ptr, &choose_fractal, data);
+	choose_fractal(&data);
 	// Suppr la fenetre avec ESC et le X de la fenetre
 	// mlx_hook(data.win_ptr, KeyPress, KeyPressMask, &handle_keypress, &data);
-	mlx_hook(data.win, EVENT_CLOSE_BTN, 0, close_it, &data);
+	mlx_hook(data.win_ptr, EVENT_CLOSE_BTN, 0, close_it, &data);
 	mlx_key_hook(data.win_ptr, key_event, &data);
 	mlx_mouse_hook(data.win_ptr, mouse_event, &data);
 	
-	mlx_hook(data.win_ptr, ClientMessage, KeyPressMask, &key_event, &data);
-	// mlx_hook(data.win_ptr, MotionNotify, PointerMotionMask, &mouse_event, &data);
+	// mlx_hook(data->win_ptr, ClientMessage, KeyPressMask, &key_event, &data);
+	// mlx_hook(data->win_ptr, MotionNotify, PointerMotionMask, &mouse_event, &data);
 
 	mlx_loop(data.mlx_ptr);
 
 	/*Execute qd il y'a plus de fenetres */
-	// mlx_destroy_image(data.mlx_ptr, data.img.mlx_img);
-	// mlx_destroy_display(data.mlx_ptr);
-	// free(data.mlx_ptr);
+	// mlx_destroy_image(data->mlx_ptr, data->img.mlx_img);
+	// mlx_destroy_display(data->mlx_ptr);
+	// free(data->mlx_ptr);
 	// }
 }
