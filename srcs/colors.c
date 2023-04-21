@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 13:40:07 by afontain          #+#    #+#             */
-/*   Updated: 2023/04/13 18:01:58 by afontain         ###   ########.fr       */
+/*   Updated: 2023/04/21 11:20:51 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,11 @@ void choose_colors(t_data *data, int x, int y, int n)
 	int g;
 	int b;
 	int z;
-	
+	double shift;
+
+	shift = data->cs * fabs((100 - 10*data->count_zoom)/100);
 	z = n + 1 - log(log2(sqrt(data->ca*data->ca + data->cb*data->cb))) / log(2);
-	r = (255.0 * (1.0 - cos(z / 256.0 * 2.0 * M_PI)) / 2.0);
+	r = (255.0 * (1.0 - cos(z / 256.0 * 2.0 * M_PI * shift)) / 2.0);
 	g = (255.0 * (1.0 - cos(z / 256.0 * 2.0 * M_PI + 2.0 * M_PI / 3.0)) / 2.0);
     b = (255.0 * (1.0 - cos(z / 256.0 * 2.0 * M_PI + 4.0 * M_PI / 3.0)) / 2.0);
 	img_pxl_put(&data->img, x, y, create_color(r, g, b));
@@ -45,10 +47,12 @@ void colors1(t_data *data, double za, double zb, int x, int y, int n)
 	int g;
 	int b;
 	int z;
+	double shift;
 	
+	shift = data->cs * fabs((100 - 10*data->count_zoom)/100);
 	z = n + 1 - log(log2(sqrt(za*za + zb*zb))) / log(2);
-	r = (255.0 * (1.0 - cos(z / 256.0 * 2.0 * M_PI + 4.0 * M_PI / 3.)) / 2.0);
-	g = (255.0 * (1.0 - cos(z / 256.0 * 2.0 * M_PI + 1.0* M_PI / 3.0)) / 2.0);
+	r = (255.0 * (1.0 - cos(z / 256.0 * 2.0 * M_PI + 4.0 * M_PI / 3.0)) / 2.0);
+	g = (255.0 * (1.0 - cos(z / 256.0 * 2.0 * M_PI + 1.0 * M_PI / 3.0 * shift)) / 2.0);
     b = (255.0 * (1.0 - cos(z / 256.0 * 2.0 * M_PI)) / 2.0);
 	img_pxl_put(&data->img, x, y, create_color(r, g, b));
 }
@@ -59,11 +63,13 @@ void choose_colors2(t_data *data, double za, double zb, int x, int y, int n)
 	int g;
 	int b;
 	int z;
+	double shift;
 	
+	shift = data->cs * fabs((100 - 10*data->count_zoom)/100);
 	z = n + 1 - log(log2(sqrt(za*za + zb*zb))) / log(2);
-	r = (255.0 * (1.0 - cos(z / 256.0 * 2.0 * M_PI + 4.0 * M_PI / 3.)) / 2.0);
-	g = (255.0 * (1.0 - cos(z / 256.0 * 2.0 * M_PI + 1.0* M_PI / 3.0)) / 2.0);
-    b = (255.0);
+	r = (255.0 * (1.0 - cos(z / 256.0 * 2.0 * M_PI + 4.0 * M_PI / 3.0)) / 2.0);
+	g = (255.0 * (1.0 - cos(z / 256.0 * 2.0 * M_PI + 1.0 * M_PI / 3.0)) / 2.0);
+    b = (255.0 * data->cs * fabs((100 - 10*data->count_zoom)/100));
 	img_pxl_put(&data->img, x, y, create_color(r, g, b));
 }
 

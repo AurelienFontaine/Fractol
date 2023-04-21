@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 12:59:38 by afontain          #+#    #+#             */
-/*   Updated: 2023/04/17 19:19:45 by afontain         ###   ########.fr       */
+/*   Updated: 2023/04/18 13:45:54 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ void	zoom(t_data *data, double zoom)
 	data->xmin = data->xmax + zoom * mil_r;
 	data->ymin = data->ymin + (mil_c - zoom * mil_c) / 2;
 	data->ymax = data->ymin + zoom * mil_c;
+	data->count_zoom++;
+	printf("%f\n", data->count_zoom);
 	printf("%f\n", data->xmax);
 	printf("%f\n", data->xmin);
 	printf("%f\n", data->ymax);

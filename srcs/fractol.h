@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 13:10:38 by afontain          #+#    #+#             */
-/*   Updated: 2023/04/17 18:34:09 by afontain         ###   ########.fr       */
+/*   Updated: 2023/04/18 13:38:56 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,8 @@ typedef struct s_data
 	double	cb;
 	double 	vr;
 	double 	vc;
+	double 	cs;
+	double	count_zoom;
 	double	xmax;
 	double	xmin;
 	double	ymax;

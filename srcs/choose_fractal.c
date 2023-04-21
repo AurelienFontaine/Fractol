@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 17:03:08 by afontain          #+#    #+#             */
-/*   Updated: 2023/04/17 19:18:46 by afontain         ###   ########.fr       */
+/*   Updated: 2023/04/18 13:32:32 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,7 @@ int choose_fractal(t_data *data)
 	printf("CECI EST UN TEST\n");
 	printf("%p\n", data);
 	if (data->set == MANDELBROT)
-	{
 		return (mandelbrot(data));
-	}
 	else if (data->set == JULIA)
 		return (julia(data));
 	else if (data->set == BURNING_SHIP)
@@ -59,10 +57,7 @@ void get_fractal(t_data *data, char **av)
 			data->set = JULIA;
 	else if (ft_strcmp(av[1], "Mandelbrot") == 0
 		|| ft_strcmp(av[1], "mandelbrot") == 0)
-		{
-			printf("%i\n", ft_strcmp(av[1], "Mandelbrot"));
 			data->set = MANDELBROT;
-		}
 	else if (ft_strcmp(av[1], "Burning_ship") == 0
 		|| ft_strcmp(av[1], "burning_ship") == 0)
 			data->set = BURNING_SHIP;
@@ -74,12 +69,15 @@ void	check_args(t_data *data, int ac, char **av)
 {
 	get_fractal(data, av);
 	set_coord(data);
+	if ((data->set != JULIA && ac > 3) || (data->set == JULIA && ac > 5))
+			write(1, "Trop de parametres saisis\n", 26);
+	if (data->set != JULIA)
+		data->cs = ft_atof(av[2]);
 	if (data->set == JULIA)
 	{
-		if((data->set != JULIA && ac >= 3) || (data->set == JULIA && ac >= 5))
-			write(1, "Trop de parametres saisis\n", 26);
 		data->vr = ft_atof(av[2]);
 		data->vc = ft_atof(av[3]);
+		data->cs = ft_atof(av[4]);
 		if(data->vr > 2.0 || data->vr < -2.0)
 			write(1, "Valeur reelle trop grande\n", 26);
 		if(data->vc > 2.0 || data->vc < -2.0)
