@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 13:10:38 by afontain          #+#    #+#             */
-/*   Updated: 2023/04/21 11:41:35 by afontain         ###   ########.fr       */
+/*   Updated: 2023/04/21 14:37:15 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,13 +105,13 @@ typedef struct s_data
 	double	xmin;
 	double	ymax;
 	double	ymin;
-	double	mouse_x;
-	double	mouse_y;
+	int		mouse_x;
+	int		mouse_y;
 	int		x;
 	int		y;
-	int		width;
-	int		height;
-	int		color;
+	// int		width;
+	// int		height;
+	// int		color;
 	t_img	img;
 	t_complex complex;
 	t_cmplx	cmplx;
@@ -150,15 +150,16 @@ void	choose_colors2(t_data *data, double za, double zb, int x, int y, int n);
 int		create_color(int R, int G, int B);
 
 //Choose Fractals
-void	check_args(t_data *data, int ac, char **av);
-void	get_fractal(t_data *data, char **av);
+int		check_args(t_data *data, int ac, char **av);
+void	get_fractal(t_data *data,int ac, char **av);
 int 	choose_fractal(t_data *data);
 
-//Take_events
+//Manage_events
 void	zoom(t_data *data, double zoom);
 void 	move(t_data *data, double move, char direction);
 int		key_event(int keysym, t_data *data);
 int 	mouse_event(int keysym, int x, int y, t_data *data);
+int		mouse_pos(int x, int y, t_data *data);
 
 //Create image
 int	 	init_window(t_data *data);

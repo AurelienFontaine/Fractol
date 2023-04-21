@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 13:08:56 by afontain          #+#    #+#             */
-/*   Updated: 2023/04/17 17:55:15 by afontain         ###   ########.fr       */
+/*   Updated: 2023/04/21 14:30:51 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,11 @@ int	main(int ac, char **av)
 	// printf("data %p\n", data);
 
 	if (ac < 2)
-		write(1, "Pas de Fractales choisies\n", 26);
+		return (write(1, "Choisir: Mandelbrot, Julia ou Burning_ship\n", 45), 1);
 	init_data(&data);
-	check_args(&data, ac, av);
-	init_window(&data);
+	if (check_args(&data, ac, av) == 0)
+	{
+		init_window(&data);
 
 	// printf("data %p\n", data);
 	
@@ -47,18 +48,19 @@ int	main(int ac, char **av)
 	// check_args(data, ac, av);
 	// choose_fractal(data, ac, av)
 	// mlx_loop_hook(data.mlx_ptr, &choose_fractal, data);
-	choose_fractal(&data);
+		choose_fractal(&data);
 	// Suppr la fenetre avec ESC et le X de la fenetre
 	// mlx_hook(data.win_ptr, KeyPress, KeyPressMask, &handle_keypress, &data);
-	mlx_hook(data.win_ptr, EVENT_CLOSE_BTN, 0, close_it, &data);
-	mlx_key_hook(data.win_ptr, key_event, &data);
-	mlx_mouse_hook(data.win_ptr, mouse_event, &data);
+	
+	 	mlx_hook(data.win_ptr, MotionNotify, PointerMotionMask, &mouse_pos, &data);
+		mlx_hook(data.win_ptr, EVENT_CLOSE_BTN, 0, close_it, &data);
+		mlx_key_hook(data.win_ptr, key_event, &data);
+		mlx_mouse_hook(data.win_ptr, mouse_event, &data);
 	
 	// mlx_hook(data->win_ptr, ClientMessage, KeyPressMask, &key_event, &data);
 	// mlx_hook(data->win_ptr, MotionNotify, PointerMotionMask, &mouse_event, &data);
-
-	mlx_loop(data.mlx_ptr);
-
+		mlx_loop(data.mlx_ptr);
+	}
 	/*Execute qd il y'a plus de fenetres */
 	// mlx_destroy_image(data->mlx_ptr, data->img.mlx_img);
 	// mlx_destroy_display(data->mlx_ptr);
