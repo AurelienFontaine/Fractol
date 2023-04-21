@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 13:10:38 by afontain          #+#    #+#             */
-/*   Updated: 2023/04/18 13:38:56 by afontain         ###   ########.fr       */
+/*   Updated: 2023/04/21 11:41:35 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,7 +145,7 @@ int 	burning_ship(t_data *data);
 //Colors
 // void	basic_choose_color(int x, int y, t_data *data, int n);
 void	choose_colors(t_data *data, int x, int y, int n);
-void	colors1(t_data *data, double za, double zb, int x, int y, int n);
+void	choose_colors1(t_data *data, double za, double zb, int x, int y, int n);
 void	choose_colors2(t_data *data, double za, double zb, int x, int y, int n);
 int		create_color(int R, int G, int B);
 

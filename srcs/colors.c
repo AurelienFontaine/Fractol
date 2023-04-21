@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 13:40:07 by afontain          #+#    #+#             */
-/*   Updated: 2023/04/21 11:20:51 by afontain         ###   ########.fr       */
+/*   Updated: 2023/04/21 11:41:05 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void choose_colors(t_data *data, int x, int y, int n)
 	img_pxl_put(&data->img, x, y, create_color(r, g, b));
 }
  
-void colors1(t_data *data, double za, double zb, int x, int y, int n)
+void choose_colors1(t_data *data, double za, double zb, int x, int y, int n)
 {
 	int r;
 	int g;

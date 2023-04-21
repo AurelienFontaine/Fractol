@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 17:03:08 by afontain          #+#    #+#             */
-/*   Updated: 2023/04/18 13:32:32 by afontain         ###   ########.fr       */
+/*   Updated: 2023/04/21 11:51:54 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,12 +72,20 @@ void	check_args(t_data *data, int ac, char **av)
 	if ((data->set != JULIA && ac > 3) || (data->set == JULIA && ac > 5))
 			write(1, "Trop de parametres saisis\n", 26);
 	if (data->set != JULIA)
-		data->cs = ft_atof(av[2]);
+	{
+		if (ft_atof(av[2]) <= 1 && ft_atof(av[2]) >= 0)
+			data->cs = ft_atof(av[2]);
+		else 
+			write(1, "Invalide CS choisir entre 0 et 1\n", 33);
+	}
 	if (data->set == JULIA)
 	{
+		if (ft_atof(av[2]) <= 1 && ft_atof(av[2]) >= 0)
+			data->cs = ft_atof(av[2]);
+		else 
+			write(1, "Invalide CS choisir entre 0 et 1\n", 33);
 		data->vr = ft_atof(av[2]);
 		data->vc = ft_atof(av[3]);
-		data->cs = ft_atof(av[4]);
 		if(data->vr > 2.0 || data->vr < -2.0)
 			write(1, "Valeur reelle trop grande\n", 26);
 		if(data->vc > 2.0 || data->vc < -2.0)
