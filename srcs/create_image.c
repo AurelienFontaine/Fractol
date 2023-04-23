@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 16:15:47 by afontain          #+#    #+#             */
-/*   Updated: 2023/04/21 15:02:13 by afontain         ###   ########.fr       */
+/*   Updated: 2023/04/23 18:02:26 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ void	init_data(t_data *data)
 	data->cb = 0;
  	data->vr = 0;
  	data->vc = 0;
-	data->xmax = 0;
-	data->xmin = 0;
-	data->ymax = 0;
-	data->ymin = 0;
+	// data->xmax = 0;
+	// data->xmin = 0;
+	// data->ymax = 0;
+	// data->ymin = 0;
 	data->mouse_x = 0;
 	data->mouse_y = 0;
 	data->x = 0;
