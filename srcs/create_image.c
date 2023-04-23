@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 16:15:47 by afontain          #+#    #+#             */
-/*   Updated: 2023/04/17 15:55:48 by afontain         ###   ########.fr       */
+/*   Updated: 2023/04/21 15:02:13 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	init_data(t_data *data)
 	data->mouse_y = 0;
 	data->x = 0;
 	data->y = 0;
-	data->color = 0;
 }
 
 int init_window(t_data *data)

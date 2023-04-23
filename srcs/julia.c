@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 12:31:23 by afontain          #+#    #+#             */
-/*   Updated: 2023/04/21 13:07:05 by afontain         ###   ########.fr       */
+/*   Updated: 2023/04/21 18:18:27 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,14 @@ int	julia(t_data *data)
 		{
 			data->ca = (x / (WINDOW_WIDTH / (data->xmax - data->xmin))) + data->xmin;
      		data->cb = (y / (WINDOW_HEIGHT / (data->ymax - data->ymin))) + data->ymin;
+			// if (x == 1 && y == 1)
+			// {
+			// printf("Nouvelles coord X max %f\n ", data->xmax);
+			// printf("Nouvelles coord	X min %f\n\n ", data->xmin);
+				
+			// printf("Nouvelles coord Y max %f\n ", data->ymax);
+			// printf("Nouvelles coord Y min %f\n\n ", data->ymin);
+			// }
 			n = 0;
 			y2 = 0;
 			x2 = 0;
