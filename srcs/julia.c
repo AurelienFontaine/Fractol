@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 12:31:23 by afontain          #+#    #+#             */
-/*   Updated: 2023/04/25 15:19:35 by afontain         ###   ########.fr       */
+/*   Updated: 2023/04/25 17:38:03 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ int	algo_j(t_data *data, int x, int y)
 	{
 		x2 = data->ca * data->ca;
 		y2 = data->cb * data->cb;
-		data->cb = 2 * data->ca * data->cb + 0.1889;
-		data->ca = x2 - y2 - 0.7269;
+		data->cb = 2 * data->ca * data->cb + data->vc;
+		data->ca = x2 - y2 + data->vr;
 		n++;
 	}
 	return (n);

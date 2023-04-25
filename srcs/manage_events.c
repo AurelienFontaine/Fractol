@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 12:59:38 by afontain          #+#    #+#             */
-/*   Updated: 2023/04/25 15:26:28 by afontain         ###   ########.fr       */
+/*   Updated: 2023/04/25 17:25:34 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,13 @@ int	mouse_event(int keysym, int x, int y, t_data *data)
 	if (keysym == MOUSE_BTN_4)
 		zoom(data, 0.5);
 	else if (keysym == MOUSE_BTN_5)
+	{
 		zoom(data, 1.1);
+		if (data->count_zoom == 1)
+			data->count_zoom -= 1;
+		else if (data->count_zoom > 1)
+			data->count_zoom -= 2;
+	}
 	else
 		return (0);
 	choose_fractal(data);
