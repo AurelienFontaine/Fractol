@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 13:08:56 by afontain          #+#    #+#             */
-/*   Updated: 2023/04/25 17:30:17 by afontain         ###   ########.fr       */
+/*   Updated: 2023/04/25 17:45:33 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ int	main(int ac, char **av)
 	t_data	data;
 
 	if (ac < 2)
-		return (write(STDERR_FILENO, "Choisir: Mandelbrot, Julia ou Burning_ship\n", 45), 1);
+		return (write(STDERR_FILENO,
+				"Choisir: Mandelbrot, Julia ou Burning_ship\n", 45), 1);
 	init_data(&data);
 	if (check_args(&data, ac, av) == 0)
 	{
