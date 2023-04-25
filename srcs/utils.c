@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 13:59:10 by afontain          #+#    #+#             */
-/*   Updated: 2023/04/11 17:36:26 by afontain         ###   ########.fr       */
+/*   Updated: 2023/04/25 14:27:52 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ int	ft_strcmp(char *s1, char *s2)
 	int	i;
 
 	i = 0;
-	while(s1[i] && s2[i] && s1[i] == s2[i])
+	while (s1[i] && s2[i] && s1[i] == s2[i])
 		i++;
 	return (s1[i] - s2[i]);
 }
 
-int ft_is_space(int c)
+int	ft_is_space(int c)
 {
 	if (c == ' ')
 		return (1);

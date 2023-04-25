@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 13:40:52 by afontain          #+#    #+#             */
-/*   Updated: 2023/04/23 16:39:01 by afontain         ###   ########.fr       */
+/*   Updated: 2023/04/25 14:05:29 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	clean_exit(int exit_code, t_data *data)
 	exit(exit_code);
 }
 
-int close_it(t_data *data)
+int	close_it(t_data *data)
 {
 	clean_exit(0, data);
 	return (0);
@@ -37,7 +37,7 @@ int close_it(t_data *data)
 
 int	handle_keypress(int keysym, t_data *data)
 {
-	if(!data->win_ptr)
+	if (!data->win_ptr)
 		free(data->win_ptr);
 	if (keysym == XK_Escape)
 	{
@@ -49,14 +49,9 @@ int	handle_keypress(int keysym, t_data *data)
 
 int	handle_mousepress(t_data *data)
 {	
-	if(data->win_ptr)
+	if (data->win_ptr)
 		free(data->win_ptr);
 	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
 	data->win_ptr = NULL;
 	return (0);
 }
-
-// int handle_mouse_pos(t_data data, int x, int y)
-// {
-	
-// }

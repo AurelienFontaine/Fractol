@@ -6,31 +6,32 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 11:29:27 by afontain          #+#    #+#             */
-/*   Updated: 2023/04/23 17:24:11 by afontain         ###   ########.fr       */
+/*   Updated: 2023/04/25 15:26:52 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	draw_mouse(t_data *data, int x, int y)
+void	move(t_data *data, double move, char direction)
 {
-	int mouse_x;
-	int mouse_y;
-	int tmp_y;
-
-	mouse_x = x + 10;
-	mouse_y = y + 3;
-	tmp_y = y;
-	while (x < mouse_x)
+	if (direction == 'U')
 	{
-		y = tmp_y;
-		while (y < mouse_y)
-		{
-			img_pxl_put(&data->img, x, y, create_color(220, 220, 220));
-			y++;
-		}
-		x++;
+		data->ymax = data->ymax - (move / (data->count_zoom + 1));
+		data->ymin = data->ymin - (move / (data->count_zoom + 1));
+	}
+	else if (direction == 'D')
+	{
+		data->ymax = data->ymax + (move / (data->count_zoom + 1));
+		data->ymin = data->ymin + (move / (data->count_zoom + 1));
+	}
+	else if (direction == 'L')
+	{
+		data->xmax = data->xmax - (move / (data->count_zoom + 1));
+		data->xmin = data->xmin - (move / (data->count_zoom + 1));
+	}
+	else if (direction == 'R')
+	{
+		data->xmax = data->xmax + (move / (data->count_zoom + 1));
+		data->xmin = data->xmin + (move / (data->count_zoom + 1));
 	}
 }
-
-

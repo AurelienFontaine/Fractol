@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 13:10:38 by afontain          #+#    #+#             */
-/*   Updated: 2023/04/23 17:46:16 by afontain         ###   ########.fr       */
+/*   Updated: 2023/04/25 15:20:42 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,6 @@ typedef struct s_data
 	double		ymin;
 	double		mouse_x;
 	double		mouse_y;
-	int			x;
-	int			y;
 	t_img		img;
 	t_complex	complex;
 	t_cmplx		cmplx;
@@ -128,7 +126,6 @@ int		choose_fractal(t_data *data);
 
 //Manage_events
 void	zoom(t_data *data, double zoom);
-void	move(t_data *data, double move, char direction);
 int		key_event(int keysym, t_data *data);
 int		mouse_event(int keysym, int x, int y, t_data *data);
 int		mouse_pos(int x, int y, t_data *data);
@@ -136,5 +133,8 @@ int		mouse_pos(int x, int y, t_data *data);
 //Create image
 int		init_window(t_data *data);
 void	init_data(t_data *data);
+
+//Draw mouse
+void	move(t_data *data, double move, char direction);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 17:03:08 by afontain          #+#    #+#             */
-/*   Updated: 2023/04/21 13:08:42 by afontain         ###   ########.fr       */
+/*   Updated: 2023/04/25 14:04:35 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,25 +20,23 @@ int	check_julia(t_data *data, int ac, char **av)
 	{
 		data->vr = ft_atof(av[2]);
 		data->vc = ft_atof(av[3]);
-		if ((data->vr>2.0 || data->vr<-2.0) && (data->vc>2.0 || data->vc<-2.0))
+		if ((data->vr > 2.0 || data->vr < -2.0)
+			&& (data->vc > 2.0 || data->vc < -2.0))
 			return (write(1, "Erreur, Choisir VR et VC entre -2 et 2\n", 38), 1);
-		if(data->vr > 2.0 || data->vr < -2.0)
+		if (data->vr > 2.0 || data->vr < -2.0)
 			return (write(1, "VR trop grande\nChoisir entre -2 et 2\n", 37), 1);
-		if(data->vc > 2.0 || data->vc < -2.0)
+		if (data->vc > 2.0 || data->vc < -2.0)
 			return (write(1, "VC trop grande\nChoisir entre -2 et 2\n", 37), 1);
 		if (ft_atof(av[4]) <= 1 && ft_atof(av[4]) >= 0)
 			data->cs = ft_atof(av[4]);
-		else 
+		else
 			return (write(1, "Invalide CS choisir entre 0 et 1\n", 33), 1);
 	}
 	return (0);
 }
 
-int choose_fractal(t_data *data)
+int	choose_fractal(t_data *data)
 {
-	// mlx_clear_window(data->mlx_ptr, data->win_ptr);
-	// printf("CECI EST UN TEST\n");
-	// printf("%p\n", data);
 	if (data->set == MANDELBROT)
 		return (mandelbrot(data));
 	else if (data->set == JULIA)
@@ -48,7 +46,7 @@ int choose_fractal(t_data *data)
 	return (0);
 }
 
-void set_coord(t_data *data)
+void	set_coord(t_data *data)
 {
 	if (data->set == MANDELBROT)
 	{
@@ -73,7 +71,7 @@ void set_coord(t_data *data)
 	}
 }
 
-void get_fractal(t_data *data, int ac, char **av)
+void	get_fractal(t_data *data, int ac, char **av)
 {
 	if (ac > 1)
 	{
@@ -85,7 +83,7 @@ void get_fractal(t_data *data, int ac, char **av)
 		else if (ft_strcmp(av[1], "Burning_ship") == 0
 			|| ft_strcmp(av[1], "burning_ship") == 0)
 				data->set = BURNING_SHIP;
-		else 
+		else
 			write(1, "Erreur, choisir: Julia, Mandelbrot ou Burning_ship\n", 51);
 	}
 }
@@ -104,24 +102,9 @@ int	check_args(t_data *data, int ac, char **av)
 	{
 		if (ft_atof(av[2]) <= 1 && ft_atof(av[2]) >= 0)
 			data->cs = ft_atof(av[2]);
-		else 
+		else
 			return (write(1, "Invalide CS choisir entre 0 et 1\n", 33), 1);
 	}
-	return(check_julia(data, ac, av));
+	return (check_julia(data, ac, av));
 	return (0);
 }
-// 	if (data->set == JULIA)
-// 	{
-// 		if (ft_atof(av[2]) <= 1 && ft_atof(av[2]) >= 0)
-// 			data->cs = ft_atof(av[2]);
-// 		else 
-// 			return (write(1, "Invalide CS choisir entre 0 et 1\n", 33), 1);
-// 		data->vr = ft_atof(av[2]);
-// 		data->vc = ft_atof(av[3]);
-// 		if(data->vr > 2.0 || data->vr < -2.0)
-// 			return (write(1, "Valeur reelle trop grande\n", 26), 1);
-// 		if(data->vc > 2.0 || data->vc < -2.0)
-// 			return (write(1, "Valeur complexe trop grande\n", 28), 1);
-// 	}
-// 	return (0);
-// }
