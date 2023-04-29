@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 14:38:38 by afontain          #+#    #+#             */
-/*   Updated: 2023/04/25 14:01:49 by afontain         ###   ########.fr       */
+/*   Updated: 2023/04/28 13:39:06 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ int	algo_b(t_data *data, int x, int y)
 	double	y2;
 	int		n;
 
-	data->ca = (x / (WINDOW_WIDTH / (data->xmax - data->xmin))) + data->xmin;
-	data->cb = (y / (WINDOW_HEIGHT / (data->ymax - data->ymin))) + data->ymin;
+	data->ca = (x * ((data->xmax - data->xmin) / WINDOW_WIDTH)) + data->xmin;
+	data->cb = (y * ((data->ymax - data->ymin) / WINDOW_HEIGHT)) + data->ymin;
 	data->za = 0;
 	data->zb = 0;
 	x2 = 0;
@@ -29,7 +29,7 @@ int	algo_b(t_data *data, int x, int y)
 	{
 		x2 = data->za * data->za;
 		y2 = data->zb * data->zb;
-		data->zb = fabs(2 * data->za * data->zb + data->cb);
+		data->zb = fabs(data->za * data->zb + data->za * data->zb + data->cb);
 		data->za = fabs(x2 - y2 + data->ca);
 		n++;
 	}

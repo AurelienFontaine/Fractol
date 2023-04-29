@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 12:59:38 by afontain          #+#    #+#             */
-/*   Updated: 2023/04/25 17:25:34 by afontain         ###   ########.fr       */
+/*   Updated: 2023/04/29 17:46:17 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,47 +14,11 @@
 
 void	check_coord(t_data *data, double len_x, double len_y, double zoom)
 {
-	if (data->xmax > 1.5)
-		data->xmax = 1.5;
-	else
-		data->xmax = data->tmp_x + (len_x) * zoom;
-	if (data->ymax > 1.5)
-		data->ymax = 1.5;
-	else
-		data->ymax = data->tmp_y + (len_y) * zoom;
-	if (data->xmin < -1.5)
-		data->xmin = -1.5;
-	else
-		data->xmin = data->tmp_x - (len_x) * zoom;
-	if (data->ymin < -1.5)
-		data->ymin = -1.5;
-	else
-		data->ymin = data->tmp_y - (len_y) * zoom;
+	data->xmax = data->tmp_x + (len_x) * zoom;
+	data->ymax = data->tmp_y + (len_y) * zoom;
+	data->xmin = data->tmp_x - (len_x) * zoom;
+	data->ymin = data->tmp_y - (len_y) * zoom;
 }
-
-// void	move(t_data *data, double move, char direction)
-// {
-// 	if (direction == 'U')
-// 	{
-// 		data->ymax = data->ymax - (move / (data->count_zoom + 1));
-// 		data->ymin = data->ymin - (move / (data->count_zoom + 1));
-// 	}
-// 	else if (direction == 'D')
-// 	{
-// 		data->ymax = data->ymax + (move / (data->count_zoom + 1));
-// 		data->ymin = data->ymin + (move / (data->count_zoom + 1));
-// 	}
-// 	else if (direction == 'L')
-// 	{
-// 		data->xmax = data->xmax - (move / (data->count_zoom + 1));
-// 		data->xmin = data->xmin - (move / (data->count_zoom + 1));
-// 	}
-// 	else if (direction == 'R')
-// 	{
-// 		data->xmax = data->xmax + (move / (data->count_zoom + 1));
-// 		data->xmin = data->xmin + (move / (data->count_zoom + 1));
-// 	}
-// }
 
 void	zoom(t_data *data, double zoom)
 {

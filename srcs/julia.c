@@ -6,7 +6,7 @@
 /*   By: afontain <afontain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 12:31:23 by afontain          #+#    #+#             */
-/*   Updated: 2023/04/25 17:38:03 by afontain         ###   ########.fr       */
+/*   Updated: 2023/04/28 13:57:25 by afontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ int	algo_j(t_data *data, int x, int y)
 	double	x2;
 	int		n;
 
-	data->ca = (x / (WINDOW_WIDTH / (data->xmax - data->xmin))) + data->xmin;
-	data->cb = (y / (WINDOW_HEIGHT / (data->ymax - data->ymin))) + data->ymin;
+	data->ca = (x * ((data->xmax - data->xmin) / WINDOW_WIDTH)) + data->xmin;
+	data->cb = (y * ((data->ymax - data->ymin) / WINDOW_HEIGHT)) + data->ymin;
 	n = 0;
 	y2 = 0;
 	x2 = 0;
@@ -27,7 +27,7 @@ int	algo_j(t_data *data, int x, int y)
 	{
 		x2 = data->ca * data->ca;
 		y2 = data->cb * data->cb;
-		data->cb = 2 * data->ca * data->cb + data->vc;
+		data->cb = data->ca * data->cb + data->ca * data->cb + data->vc;
 		data->ca = x2 - y2 + data->vr;
 		n++;
 	}
