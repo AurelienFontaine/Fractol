@@ -44,9 +44,17 @@ Si un paramètre est invalide ou manquant, le programme affiche la liste des opt
 - **Effets de changement de couleurs dynamiques**.
 
 ## Screenshots
-<img width="684" alt="Run" src="Imgs/Mandelbrot.png">
-<img width="684" alt="Run" src="Imgs/Julia.png">
-<img width="684" alt="Run" src="Imgs/Burning_Ship.png">
+<div align="center">
+  <!-- Première image en grand -->
+  <img src="imgs/Mandelbrot.png" width="800" alt="Mandelbrot">
+
+  <!-- Conteneur pour aligner les deux autres images -->
+  <div style="display: flex; justify-content: center; gap: 20px; margin-top: 10px;">
+    <img src="imgs/Julia.png" width="400" alt="Julia">
+    <img src="imgs/Burning_Ship.png" width="400" alt="Burning Ship">
+  </div>
+</div>
+
 
 ## Auteur
 Projet développé par **[Aurelien Fontaine]**.
